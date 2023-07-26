@@ -13,13 +13,6 @@
   width: 100%;
 }
 
-.step:hover {
-  outline-width: 1px;
-  outline-color: blue;
-  outline-style: solid;
-  border-radius: 0.5em;
-}
-
 .stepTitle {
   display: flex;
   flex-direction: row;

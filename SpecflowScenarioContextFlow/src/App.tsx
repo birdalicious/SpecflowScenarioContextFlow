@@ -1,15 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { StepMatcher, StepRegex } from './backend/StepMatcher'
 
-const tempString = `Given user adds an estimate
+import test from "./assets/test.json";
+
+const tempString = `Given user creates a new Repair order
+And user adds an estimate
 When user submits an estimate
 Then user rejects an estimate`
 
 function App() {
   const [steps, setSteps] = useState<string[]>(tempString.split("\n"))
+
+  useEffect(() => {
+    const getMatches = async () => {
+      let stepMatcher = new StepMatcher(test.stepRegex as StepRegex);
+
+      let match = await stepMatcher.match(steps[0]);
+
+      console.log(match);
+    }
+
+    getMatches();
+  }, [steps]);
 
   return (
     <>
