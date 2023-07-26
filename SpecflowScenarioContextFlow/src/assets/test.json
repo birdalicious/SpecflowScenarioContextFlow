@@ -1,20 +1,42 @@
-{"steps": {
-    "user adds an estimate": {
-        "type": "Given",
-        "name": "user adds an estimate",
-        "gets": [],
-        "sets": ["Estimate.ContainerId"]
+{
+    "stepDefinitions": {
+        "WhenUserAddsAnEstimate": {
+            "gets": ["Order.OrderId"],
+            "sets": ["Estimate.EstimateContainerId", "Estimate.EstimateId"]
+        },
+        "GivenUserCreatesANewRepairOrder": {
+            "gets": [],
+            "sets": ["Order.OrderId", "Order.OrderItemId"]
+        },
+        "WhenUserSubmitsTheEstimate": {
+            "gets": ["Estimate.EstimateContainerId", "Estimate.EstimateId"],
+            "sets": []
+        },
+        "ThenUserRejectsAnEstimate": {
+            "gets": ["Estimate.EstimateContainerId"],
+            "sets": ["Estimate.EstimateStatus"]
+        }
     },
-    "user submits an estimate": {
-        "type": "Step",
-        "name": "user submits an estimate",
-        "gets": ["Estimate.ContainerId"],
-        "sets": ["Estimate.EstimateId"]
-    },
-    "user rejects an estimate": {
-        "type": "Then",
-        "name": "user rejects an estimate",
-        "gets": ["Estimate.ContainerId", "Estimate.EstimateId"],
-        "sets": ["Estimate.ApprovalStatus"]
+    "stepRegex": {
+        "user adds an estimate": {
+            "scenarioBlock": "Step",
+            "stepDefinition": "WhenUserAddsAnEstimate"
+        },
+        "user adds an estimate EST": {
+            "scenarioBlock": "Step",
+            "stepDefinition": "WhenUserAddsAnEstimate"
+        },
+        "user creates a new (.*) order": {
+            "scenarioBlock": "Given",
+            "stepDefinition": "GivenUserCreatesANewRepairOrder"
+        },
+         "user submits the estimate": {
+            "scenarioBlock": "Step",
+            "stepDefinition": "WhenUserSubmitsTheEstimate"
+        },
+        "user rejects an estimate": {
+            "scenarioBlock": "Then",
+            "stepDefinition": "ThenUserRejectsAnEstimate"
+        }
     }
-}}
+}
