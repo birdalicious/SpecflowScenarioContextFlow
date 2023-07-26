@@ -1,0 +1,20 @@
+{"steps": {
+    "user adds an estimate": {
+        "type": "Given",
+        "name": "user adds an estimate",
+        "gets": [],
+        "sets": ["Estimate.ContainerId"]
+    },
+    "user submits an estimate": {
+        "type": "Step",
+        "name": "user submits an estimate",
+        "gets": ["Estimate.ContainerId"],
+        "sets": ["Estimate.EstimateId"]
+    },
+    "user rejects an estimate": {
+        "type": "Then",
+        "name": "user rejects an estimate",
+        "gets": ["Estimate.ContainerId", "Estimate.EstimateId"],
+        "sets": ["Estimate.ApprovalStatus"]
+    }
+}}

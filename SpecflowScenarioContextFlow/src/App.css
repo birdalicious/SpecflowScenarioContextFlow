@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+#root > * {
+  margin: 1em;
+}
+
+#flowContainer {
+  width: 100%;
+}
+
+.step:hover {
+  outline-width: 1px;
+  outline-color: blue;
+  outline-style: solid;
+  border-radius: 0.5em;
+}
+
+.stepTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.stepType {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
+  font-family: monospace, monospace;
+  color: #888;
+  font-weight: bold;
+}
+
+.stepName {
+  flex-grow: 1;
+}
+
+.stepDropDownButton {
+  padding: 0em 0.35em;
+  cursor: pointer;
+}
+
+.stepContext {
+  margin: 0 0.5em 0.5em 3.5em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.stepContext > *{
+  flex-grow: 1;
+}
